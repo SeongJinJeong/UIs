@@ -67,7 +67,7 @@ const DivTop = styled.div`
 `;
 
 const Container = styled.div`
-  margin-left: 15%;
+  margin-left: 10%;
 `;
 
 const Link = styled.a`
@@ -78,12 +78,15 @@ const Link = styled.a`
   text-decoration: none;
 
   color: #db7093;
+  &:hover {
+    color: #ffc0cb;
+  }
 `;
 
 const Title = styled(Link)`
   font-size: 30px;
   color: white;
-  margin-right: 20px;
+  margin-right: 2em;
   margin-left: 0px;
 `;
 
@@ -116,6 +119,10 @@ const LoginLink = styled(Link)`
   text-transform: uppercase;
 
   text-decoration: none;
+
+  &:hover {
+    color: #ffc0cb;
+  }
 `;
 
 export default TopUI;
