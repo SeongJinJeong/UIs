@@ -77,6 +77,8 @@ const Link = styled.a`
   text-align: center;
   text-decoration: none;
 
+  font-weight: bold;
+
   color: #db7093;
   &:hover {
     color: #ffc0cb;
@@ -119,10 +121,6 @@ const LoginLink = styled(Link)`
   text-transform: uppercase;
 
   text-decoration: none;
-
-  &:hover {
-    color: #ffc0cb;
-  }
 `;
 
 export default TopUI;
