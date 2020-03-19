@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { IconContext } from "react-icons";
+import { MdMenu } from "react-icons/md";
 
 const TopUI = () => {
   const [width, setWidth] = useState(document.body.clientWidth);
@@ -20,7 +22,11 @@ const TopUI = () => {
             </>
           )}
           {width < 770 ? (
-            <Img src="#" />
+            <IconContext.Provider value={{ size: "3em" }}>
+              <Icons>
+                <MdMenu />
+              </Icons>
+            </IconContext.Provider>
           ) : (
             <>
               <LoginUi>
@@ -68,9 +74,12 @@ const Title = styled(Link)`
   margin-left: 0px;
 `;
 
-const Img = styled.img`
+const Icons = styled.span`
   width: 30px;
   height: 30px;
+
+  margin-top: auto;
+  margin-bottom: auto;
 
   float: right;
   margin-right: 1em;
