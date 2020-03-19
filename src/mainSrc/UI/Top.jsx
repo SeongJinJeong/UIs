@@ -5,7 +5,6 @@ import { MdMenu } from "react-icons/md";
 
 const TopUI = () => {
   const [width, setWidth] = useState(document.body.clientWidth);
-  const [isDevice, setIsDevice] = useState("");
   console.log(width);
 
   return (
@@ -22,7 +21,7 @@ const TopUI = () => {
             </>
           )}
           {width < 770 ? (
-            <IconContext.Provider value={{ size: "3em" }}>
+            <IconContext.Provider value={{ size: "5em" }}>
               <Icons>
                 <MdMenu />
               </Icons>
@@ -38,6 +37,20 @@ const TopUI = () => {
         </Container>
       </DivTop>
     </>
+  );
+};
+
+const mobileMenuHandle = () => {
+  return (
+    <div id="mySidenav" className="sidenav">
+      <a href="javascript:void(0)" className="closebtn" onclick="closeNav()">
+        &times;
+      </a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Clients</a>
+      <a href="#">Contact</a>
+    </div>
   );
 };
 
@@ -77,6 +90,10 @@ const Title = styled(Link)`
 const Icons = styled.span`
   width: 30px;
   height: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   margin-top: auto;
   margin-bottom: auto;
