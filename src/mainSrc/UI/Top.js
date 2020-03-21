@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { IconContext } from "react-icons";
-import { MdMenu } from "react-icons/md";
+import { MdMenu, MdKeyboardTab } from "react-icons/md";
 
 const TopUI = () => {
   const [width, setWidth] = useState(document.body.clientWidth);
-  const [height,setHeight] = useState(document.body.clientHeight);
-  console.log('Your device Width is ',width);
+  const [height, setHeight] = useState(document.body.clientHeight);
+  console.log("Your device Width is ", width);
 
   return (
     <>
@@ -23,12 +23,12 @@ const TopUI = () => {
           )}
           {width < 770 ? (
             <>
-            <IconContext.Provider value={{ size: "5em" }}>
-              <Icons id="mobileMenuIcon" onClick={()=>handleMenu()}>
-                <MdMenu />
-              </Icons>
-            </IconContext.Provider>
-            <MobileMenu height={height}/>
+              <IconContext.Provider value={{ size: "5em" }}>
+                <MenuIcon id="mobileMenuIcon" onClick={() => handleMenu()}>
+                  <MdMenu />
+                </MenuIcon>
+              </IconContext.Provider>
+              <MobileMenu height={height} />
             </>
           ) : (
             <>
@@ -44,32 +44,44 @@ const TopUI = () => {
   );
 };
 
-const MobileMenu = (props) =>{
-  return(
+const MobileMenu = props => {
+  return (
     <>
-      <MobileMenuDiv id="MenuDiv" height={props.height}>
+      <MobileMenuDiv id="MenuDiv" height={document.body.clientHeight}>
+        <IconContext.Provider value={{ size: "5em" }}>
+          <CloseIcon id="mobileMenuIcon" onClick={() => handleMenuClose()}>
+            <MdKeyboardTab color="white" />
+          </CloseIcon>
+        </IconContext.Provider>
         <span>hi</span>
         <span>hi</span>
         <span>hi</span>
-
       </MobileMenuDiv>
     </>
-  )
-}
+  );
+};
 
-const handleMenu = () =>{
+const handleMenu = () => {
   const MenuIcon = document.getElementById("mobileMenuIcon");
   const Menu = document.getElementById("MenuDiv");
   MenuIcon.style.display = "none";
   Menu.style.display = "flex";
   Menu.style.visibility = "visible";
   console.log(Menu.style.height);
-}
+};
 
+const handleMenuClose = () => {
+  const MenuIcon = document.getElementById("mobileMenuIcon");
+  const Menu = document.getElementById("MenuDiv");
+  MenuIcon.style.display = "flex";
+  MenuIcon.style.visibility = "visible";
+  Menu.style.display = "none";
+  console.log(Menu.style.height);
+};
 
 const DivTop = styled.div`
   margin: 0 !important;
-  width: ${props=>props.width || "100%"};
+  width: ${props => props.width || "100%"};
   height: 100%;
   display: block;
 
@@ -117,7 +129,14 @@ const Icons = styled.span`
   margin-bottom: auto;
 
   float: right;
+`;
+
+const MenuIcon = styled(Icons)`
   margin-right: 1.5em;
+`;
+
+const CloseIcon = styled(Icons)`
+  margin-left: 1em;
 `;
 
 const LoginUi = styled.div`
@@ -139,13 +158,17 @@ const LoginLink = styled(Link)`
 const MobileMenuDiv = styled.div`
   margin: 0;
 
-  width : 50%;
-  height: ${props=>props.height || "500px"};
+  width: 50%;
+  height: ${props => props.height || "500px"};
 
-  display : none;
-  float : right;
-  
-  background-color : #2c2c2c;
+  display: none;
+  float: right;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  background-color: #2c2c2c;
 `;
 
 export default TopUI;
