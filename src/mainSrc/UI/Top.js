@@ -47,15 +47,12 @@ const TopUI = () => {
 const MobileMenu = props => {
   return (
     <>
-      <MobileMenuDiv id="MenuDiv" height={document.body.clientHeight}>
+      <MobileMenuDiv id="MenuDiv">
         <IconContext.Provider value={{ size: "5em" }}>
           <CloseIcon id="mobileMenuIcon" onClick={() => handleMenuClose()}>
             <MdKeyboardTab color="white" />
           </CloseIcon>
         </IconContext.Provider>
-        <span>hi</span>
-        <span>hi</span>
-        <span>hi</span>
       </MobileMenuDiv>
     </>
   );
@@ -87,7 +84,7 @@ const DivTop = styled.div`
 
   padding: 10px 10px;
 
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #9370db;
   background-color: #9370db;
 `;
 
@@ -136,7 +133,10 @@ const MenuIcon = styled(Icons)`
 `;
 
 const CloseIcon = styled(Icons)`
-  margin-left: 1em;
+  margin-right: 2em;
+  margin-top : 0.7em;
+  position: fixed;
+  right : 10px;
 `;
 
 const LoginUi = styled.div`
@@ -168,8 +168,8 @@ const MobileMenuDiv = styled.div`
   top: 0;
   right: 0;
 
-  border : 1px solid black;
-  border-radius : 3em 0em 0em 3em;
+  border: 1px solid black;
+  border-radius: 3em 0em 0em 3em;
 
   background-color: #2c2c2c;
 `;
