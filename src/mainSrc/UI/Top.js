@@ -5,11 +5,12 @@ import { MdMenu } from "react-icons/md";
 
 const TopUI = () => {
   const [width, setWidth] = useState(document.body.clientWidth);
-  console.log(width);
+  const [height,setHeight] = useState(document.body.clientHeight);
+  console.log('Your device Width is ',width);
 
   return (
     <>
-      <DivTop>
+      <DivTop width={width}>
         <Container>
           <Title href="#">Title</Title>
           {width < 770 ? null : (
@@ -21,11 +22,14 @@ const TopUI = () => {
             </>
           )}
           {width < 770 ? (
+            <>
             <IconContext.Provider value={{ size: "5em" }}>
-              <Icons>
+              <Icons id="mobileMenuIcon" onClick={()=>handleMenu()}>
                 <MdMenu />
               </Icons>
             </IconContext.Provider>
+            <MobileMenu height={height}/>
+            </>
           ) : (
             <>
               <LoginUi>
@@ -40,23 +44,32 @@ const TopUI = () => {
   );
 };
 
-const mobileMenuHandle = () => {
-  return (
-    <div id="mySidenav" className="sidenav">
-      <a href="javascript:void(0)" className="closebtn" onclick="closeNav()">
-        &times;
-      </a>
-      <a href="#">About</a>
-      <a href="#">Services</a>
-      <a href="#">Clients</a>
-      <a href="#">Contact</a>
-    </div>
-  );
-};
+const MobileMenu = (props) =>{
+  return(
+    <>
+      <MobileMenuDiv id="MenuDiv" height={props.height}>
+        <span>hi</span>
+        <span>hi</span>
+        <span>hi</span>
+
+      </MobileMenuDiv>
+    </>
+  )
+}
+
+const handleMenu = () =>{
+  const MenuIcon = document.getElementById("mobileMenuIcon");
+  const Menu = document.getElementById("MenuDiv");
+  MenuIcon.style.display = "none";
+  Menu.style.display = "flex";
+  Menu.style.visibility = "visible";
+  console.log(Menu.style.height);
+}
+
 
 const DivTop = styled.div`
   margin: 0 !important;
-  width: 100%;
+  width: ${props=>props.width || "100%"};
   height: 100%;
   display: block;
 
@@ -104,7 +117,7 @@ const Icons = styled.span`
   margin-bottom: auto;
 
   float: right;
-  margin-right: 1em;
+  margin-right: 1.5em;
 `;
 
 const LoginUi = styled.div`
@@ -121,6 +134,18 @@ const LoginLink = styled(Link)`
   text-transform: uppercase;
 
   text-decoration: none;
+`;
+
+const MobileMenuDiv = styled.div`
+  margin: 0;
+
+  width : 50%;
+  height: ${props=>props.height || "500px"};
+
+  display : none;
+  float : right;
+  
+  background-color : #2c2c2c;
 `;
 
 export default TopUI;
