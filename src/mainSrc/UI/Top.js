@@ -168,6 +168,9 @@ const MobileMenuDiv = styled.div`
   top: 0;
   right: 0;
 
+  border : 1px solid black;
+  border-radius : 3em 0em 0em 3em;
+
   background-color: #2c2c2c;
 `;
 
