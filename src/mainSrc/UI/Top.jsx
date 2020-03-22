@@ -14,10 +14,10 @@ const TopUI = () => {
           <Title href="#">Title</Title>
           {width < 770 ? null : (
             <>
-              <Link href="#">content 1</Link>
-              <Link href="#">content 2</Link>
-              <Link href="#">content 3</Link>
-              <Link href="#">content 4</Link>
+              <Link href="#">EX1</Link>
+              <Link href="#">EX2</Link>
+              <Link href="#">EX3</Link>
+              <Link href="#">EX4</Link>
             </>
           )}
           {width < 770 ? (
@@ -79,7 +79,7 @@ const Link = styled.a`
 
   font-weight: bold;
 
-  color: #db7093;
+  color: #3e206d;
   &:hover {
     color: #ffc0cb;
   }
